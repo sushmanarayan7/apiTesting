@@ -3,7 +3,7 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Test - Suite]">
   <test name="Coinsecure api">
     <classes>
-      <class name="ExchangeTradeData.exchangeBidPending"/>
+      <class name="BlockchainTools.bitcoinSearchConfirmationTxid"/>
     </classes>
   </test> <!-- Coinsecure api -->
 </suite> <!-- Failed suite [Test - Suite] -->

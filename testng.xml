@@ -8,7 +8,7 @@
     <!--<class name="AccountActions.LoginInitiateApi" />-->
     <!--<class name="apiTestCases.loginToken" />-->
     <!--<class name="AccountActions.userProfilePhoneOtp" />-->
-    <class name="ExchangeTradeData.exchangeBidPending" />
+    <class name="BlockchainTools.bitcoinSearchConfirmationTxid" />
 </classes>
 </test>
 </suite>

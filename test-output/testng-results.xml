@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Test - Suite" duration-ms="11108" started-at="2018-01-08T05:08:26Z" finished-at="2018-01-08T05:08:38Z">
+  <suite name="Test - Suite" duration-ms="9140" started-at="2018-01-09T06:12:17Z" finished-at="2018-01-09T06:12:26Z">
     <groups>
     </groups>
-    <test name="Coinsecure api" duration-ms="11108" started-at="2018-01-08T05:08:26Z" finished-at="2018-01-08T05:08:38Z">
-      <class name="ExchangeTradeData.exchangeBidPending">
-        <test-method status="PASS" signature="setDriver()[pri:0, instance:ExchangeTradeData.exchangeBidPending@c756bd]" name="setDriver" is-config="true" duration-ms="4539" started-at="2018-01-08T10:38:26Z" finished-at="2018-01-08T10:38:31Z">
+    <test name="Coinsecure api" duration-ms="9140" started-at="2018-01-09T06:12:17Z" finished-at="2018-01-09T06:12:26Z">
+      <class name="BlockchainTools.bitcoinSearchConfirmationTxid">
+        <test-method status="PASS" signature="setDriver()[pri:0, instance:BlockchainTools.bitcoinSearchConfirmationTxid@c756bd]" name="setDriver" is-config="true" duration-ms="4541" started-at="2018-01-09T11:42:17Z" finished-at="2018-01-09T11:42:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setDriver -->
-        <test-method status="PASS" signature="BidPending()[pri:0, instance:ExchangeTradeData.exchangeBidPending@c756bd]" name="BidPending" duration-ms="6537" started-at="2018-01-08T10:38:31Z" finished-at="2018-01-08T10:38:38Z">
+        <test-method status="PASS" signature="SearchConfirmationTxid()[pri:0, instance:BlockchainTools.bitcoinSearchConfirmationTxid@c756bd]" name="SearchConfirmationTxid" duration-ms="3855" started-at="2018-01-09T11:42:22Z" finished-at="2018-01-09T11:42:25Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- BidPending -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:ExchangeTradeData.exchangeBidPending@c756bd]" name="afterTest" is-config="true" duration-ms="25" started-at="2018-01-08T10:38:38Z" finished-at="2018-01-08T10:38:38Z">
+        </test-method> <!-- SearchConfirmationTxid -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:BlockchainTools.bitcoinSearchConfirmationTxid@c756bd]" name="afterTest" is-config="true" duration-ms="733" started-at="2018-01-09T11:42:25Z" finished-at="2018-01-09T11:42:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- ExchangeTradeData.exchangeBidPending -->
+      </class> <!-- BlockchainTools.bitcoinSearchConfirmationTxid -->
     </test> <!-- Coinsecure api -->
   </suite> <!-- Test - Suite -->
 </testng-results>

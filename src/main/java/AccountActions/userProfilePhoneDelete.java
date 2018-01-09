@@ -14,6 +14,8 @@ public class userProfilePhoneDelete extends DriverCreation
     public void ProfilePhoneDelete()
     {
         RequestSpecification httpRequest = RestAssured.given();
-        Response response=httpRequest.header("Authorization",apikey).get("/wallet/coin/withdraw/unverified");
+        Response response=httpRequest.header("Authorization",apikey).delete("/user/profile/phone/delete");
+        response.then().log().status();
+        response.getBody().print();
     }
 }
