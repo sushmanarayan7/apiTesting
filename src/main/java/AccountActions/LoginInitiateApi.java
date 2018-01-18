@@ -23,44 +23,32 @@ public class LoginInitiateApi extends DriverCreation{
    RestAssured restAssured = new RestAssured();
    GetToken getToken = new GetToken();
 
-//   @DataProvider(name = "apiData")
-//    public Object[][] dataSource() {
-//        return new String[][]{
-//                {"testing12@coinsecure.in"}};
-//    }
+    public ReadExcel excelreader;
 
- //@Test()
- public RestAssured loginInitiate(String loginID) throws Exception {
+    @DataProvider(name = "apiData")
+    public Object[][] dataSource()
+    {
+        excelreader = new ReadExcel();
+        return excelreader.readExcel("poi_test.xlsx","Data");
 
-       jsonAsMap.put("loginID",loginID);
+    }
+    @Test(dataProvider="apiData")
+ public void loginInitiate(String email,String password) throws Exception
+    {
+//        String baseHost = System.getProperty("server.host");
+//        if (baseHost==null)
+//        {
+//            baseHost= "https://api.coinsecure.in/v1";
+//        }
+//        RestAssured.baseURI=baseHost;
+//        System.out.println("Base URI is : " + RestAssured.baseURI);
+
+       jsonAsMap.put("loginID",email);
        restAssured.given().
        contentType("application/json").
        baseUri(baseURI).
        body(jsonAsMap).
        when().post("/login/initiate").
        then().log().body();
-       return restAssured;
   }
-
-//@Test
-  public RestAssured loginApi(String email, String password) throws Exception{
-      BufferedReader reader = new BufferedReader(new FileReader("Token-File.txt"));
-      getToken.getToken();
-      String logintoken=reader.readLine();
-
-      String token = "https://coinsecure.in/verifylogin/"+reader.readLine()+"?email="+email;
-      System.out.println("Token to test Login API is : " +token);
-      jsonAsMap.put("email",email);
-      jsonAsMap.put("token",token);
-      jsonAsMap.put("password",password);
-      jsonAsMap.put("gcmCode","123");
-      jsonAsMap.put("pin","560045");
-      restAssured.given().
-      contentType("application/json").
-      baseUri(baseURI).body(jsonAsMap).
-      when().
-      post("/login").
-      then().log().body();
-      return restAssured;
-}
 }

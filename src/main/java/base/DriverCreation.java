@@ -1,5 +1,6 @@
 package base;
 
+import com.jayway.restassured.RestAssured;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
@@ -16,13 +17,20 @@ public class DriverCreation {
     public void setDriver(){
 
         System.setProperty(cdName, cdPath);
-        chromeDriver = new FirefoxDriver();
+//      chromeDriver = new FirefoxDriver();
 //		chromeDriver.get(loginURL);
+        String baseHost = System.getProperty("server.host");
+        if (baseHost==null)
+        {
+            baseHost= "https://api.coinsecure.in/v1";
+        }
+        RestAssured.baseURI=baseHost;
+        System.out.println("Base URI is : " + RestAssured.baseURI);
     }
 
-    @AfterMethod
-    public void afterTest()
-    {
-        chromeDriver.close();
-    }
+//    @AfterMethod
+//    public void afterTest()
+//    {
+//        chromeDriver.close();
+//    }
 }
