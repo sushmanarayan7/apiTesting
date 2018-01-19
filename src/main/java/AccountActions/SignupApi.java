@@ -25,13 +25,13 @@ public class SignupApi extends DriverCreation
     @Test(dataProvider="apiData")
     public void signupApi(String email, String password)
     {
-        String baseHost = System.getProperty("server.host");
-        if (baseHost==null)
-        {
-            baseHost= "https://api.coinsecure.in/v1";
-        }
-        RestAssured.baseURI=baseHost;
-        System.out.println("Base URI is : " + RestAssured.baseURI);
+//        String baseHost = System.getProperty("server.host");
+//        if (baseHost==null)
+//        {
+//            baseHost= "https://api.coinsecure.in/v1";
+//        }
+//        RestAssured.baseURI=baseHost;
+//        System.out.println("Base URI is : " + RestAssured.baseURI);
 
 
         Map<String,Object> jsonAsMap = new HashMap<>();

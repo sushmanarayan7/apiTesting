@@ -1,7 +1,10 @@
 package AccountActions;
 
 import base.DriverCreation;
+import base.ReadExcel;
 import com.jayway.restassured.RestAssured;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,10 +15,19 @@ import static com.jayway.restassured.RestAssured.baseURI;
 
 public class LoginApi extends DriverCreation
 {
-
       GetToken getToken = new GetToken();
       RestAssured restAssured = new RestAssured();
 
+    public ReadExcel excelreader;
+
+    @DataProvider(name = "apiData")
+    public Object[][] dataSource()
+    {
+        excelreader = new ReadExcel();
+        return excelreader.readExcel("poi_test.xlsx","Data");
+    }
+
+    @Test(dataProvider="apiData")
       public void loginApi(String email, String password) throws Exception
       {
         BufferedReader reader = new BufferedReader(new FileReader("Token-File.txt"));
