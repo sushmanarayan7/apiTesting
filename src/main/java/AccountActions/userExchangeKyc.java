@@ -27,7 +27,6 @@ public class userExchangeKyc extends DriverCreation
         requestparms.put("banType","Savings");
         requestparms.put("phone","8792090543");
         requestparms.put("otp","2061521");
-//        requestparms.put("file","/home/coinsecure-36/Downloads/penguin.jpeg");
         requestparms.put("address1","Banaswadi");
         requestparms.put("address2","Bangalore");
         requestparms.put("city","Bangalore");
@@ -37,7 +36,7 @@ public class userExchangeKyc extends DriverCreation
         Response response=httpRequest.header("Authorization","kpi76QrUqQzwV1nAbCJ0Rkdk9SaSXsoKPTp8Se2R").
                 formParameters(requestparms).
                 multiPart("file", new File("/home/coinsecure-36/Downloads/penguin.jpeg")).
-                formParam("file", "/home/coinsecure-36/Downloads/penguin.jpeg").
+//                formParam("file", "/home/coinsecure-36/Downloads/penguin.jpeg").
                 contentType("multipart/form-data").
         when().
         put("/user/exchange/kyc");

@@ -1,6 +1,7 @@
 package AccountActions;
 
 import base.*;
+import com.sun.mail.imap.IMAPFolder;
 import com.sun.mail.util.MailSSLSocketFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -25,6 +26,7 @@ public class GetToken extends DriverCreation{
     // Method to set the Session, read the number of unread messages and set the port.
     public void getToken() throws MessagingException,IOException,GeneralSecurityException {
         Properties props = System.getProperties();
+        IMAPFolder inbox = null;
         props.setProperty("mail.store.protocol", "imaps");
         MailSSLSocketFactory socketFactory = new MailSSLSocketFactory();
         socketFactory.setTrustAllHosts(true);
@@ -33,10 +35,11 @@ public class GetToken extends DriverCreation{
 //        props.put("mail.imaps.ssl.enable", socketFactory);
         props.setProperty("mail.imap.ssl.enable","true");
         Session session = Session.getDefaultInstance(props, null);
-        Store store = session.getStore("imap");
+        Store store = session.getStore("imaps");
         System.out.println("Waiting to read mail");
-        store.connect("hawk.coinsecure.in","testing12@coinsecure.in", "zp}DX4:y!/5}X>aY"); // Hardcoded the username and password. There is an alternative solution.
-        Folder inbox = store.getFolder("INBOX");
+        store.connect("imap.googlemail.com","tesing1.coinsecure@gmail.com", "CoinSecure@12*"); // Hardcoded the username and password. There is an alternative solution.
+        //"tesing1.coinsecure@gmail.com", "CoinSecure@12*"
+        inbox = (IMAPFolder)store.getFolder("INBOX");
         System.out.println("Number of Unread Messages : " + inbox.getUnreadMessageCount());
         inbox.open(Folder.READ_WRITE);
         Message[] messages = inbox.search(new FlagTerm(new Flags(Flags.Flag.SEEN), false));

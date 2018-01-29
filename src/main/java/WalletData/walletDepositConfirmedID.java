@@ -14,7 +14,8 @@ public class walletDepositConfirmedID extends DriverCreation
     public void DepositConfirmedID()
     {
         RequestSpecification httpRequest = RestAssured.given();
-        Response response=httpRequest.pathParam("walletID","ll1kvbH8C92dwdYlQURF").header("Authorization",apikey).get("/user/wallet/coin/deposit/confirmed/{walletID}");
+        Response response=httpRequest.pathParam("walletID","ll1kvbH8C92dwdYlQURF").header("Authorization",apikey).
+                get("/user/wallet/coin/deposit/confirmed/{walletID}");
         response.then().statusCode(200).log().status();
         response.getBody().print();
 //        String walletid=response.then().extract().path("message.walletID");

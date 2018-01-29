@@ -16,7 +16,6 @@ public class ReadExcel
     {
         try {
 
-            // logger.info("Creating excel object:-"+excellocation);
             String dataSets[][] = null;
             FileInputStream file = new FileInputStream(new File(excellocation));
             // Create Workbook instance holding reference to .xlsx file
@@ -76,7 +75,6 @@ public class ReadExcel
                                 break;
                         }
                     }
-                    // System.out.println("");
                 }
             }
 

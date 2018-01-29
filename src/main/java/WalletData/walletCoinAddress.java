@@ -14,7 +14,8 @@ public class walletCoinAddress extends DriverCreation
     public void CoinAddress()
     {
         RequestSpecification httpRequest = RestAssured.given();
-        Response response=httpRequest.pathParam("walletID","ll1kvbH8C92dwdYlQURF").header("Authorization",apikey).get("/user/wallet/coin/address/{walletID}");
+        Response response=httpRequest.pathParam("walletID","ll1kvbH8C92dwdYlQURF").header("Authorization",apikey).
+                get("/user/wallet/coin/address/{walletID}");
         response.then() .log().status();
         response.getBody().print();
     }

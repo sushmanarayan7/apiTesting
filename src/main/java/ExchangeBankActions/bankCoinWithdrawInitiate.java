@@ -1,27 +1,38 @@
 package ExchangeBankActions;
 
 import base.DriverCreation;
+import base.ReadExcel;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 import net.minidev.json.JSONObject;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class bankCoinWithdrawInitiate extends DriverCreation
 {
-    @Test
-    public void CoinWirhdrawInitiate()
+    public ReadExcel excelreader;
+
+    @DataProvider(name = "apiData")
+    public Object[][] dataSource()
+    {
+        excelreader = new ReadExcel();
+        return excelreader.readExcel("poi_test.xlsx","CoinWithdrawinitiate");
+    }
+
+    @Test(dataProvider="apiData")
+    public void CoinWirhdrawInitiate(String satoshis,String toAddr,String msg,String pin,String apikey)
     {
         RequestSpecification httpRequest = RestAssured.given();
 
         JSONObject requestparms= new JSONObject();
-        requestparms.put("satoshis","1000000");
-        requestparms.put("toAddr","1CNugRENyVP6aCbUku6TnryNEs6a41eMKF");
-        requestparms.put("msg","Testing");
-        requestparms.put("pin","");
+        requestparms.put("satoshis",satoshis);
+        requestparms.put("toAddr",toAddr);
+        requestparms.put("msg",msg);
+        requestparms.put("pin",pin);
 
-        Response response=httpRequest.body(requestparms).header("Authorization","h947NqE3snlyWjznSVFW2UaBLRHzIS62CcY1KhjA").
+        Response response=httpRequest.body(requestparms).header("Authorization",apikey).
                 when().
                 contentType(ContentType.JSON).
                 post("/user/exchange/bank/coin/withdraw/initiate");

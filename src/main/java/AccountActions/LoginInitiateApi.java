@@ -35,20 +35,12 @@ public class LoginInitiateApi extends DriverCreation{
     @Test(dataProvider="apiData")
  public void loginInitiate(String email,String password) throws Exception
     {
-//        String baseHost = System.getProperty("server.host");
-//        if (baseHost==null)
-//        {
-//            baseHost= "https://api.coinsecure.in/v1";
-//        }
-//        RestAssured.baseURI=baseHost;
-//        System.out.println("Base URI is : " + RestAssured.baseURI);
-
        jsonAsMap.put("loginID",email);
        restAssured.given().
        contentType("application/json").
        baseUri(baseURI).
        body(jsonAsMap).
        when().post("/login/initiate").
-       then().log().body();
+       then().log().status().and().log().body();
   }
 }

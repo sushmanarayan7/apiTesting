@@ -1,5 +1,6 @@
 package base;
 
+import AccountActions.GetToken;
 import AccountActions.LoginInitiateApi;
 import com.jayway.restassured.RestAssured;
 import org.testng.TestNG;
@@ -11,14 +12,16 @@ public class ExecuteTest
 {
     public static void main(String[] args) throws Exception{
 
-        String baseHost = System.getProperty("server.host");
-        if (baseHost==null) {
-//            baseHost = "https://coinsecure.in";
-            baseHost= "https://api.coinsecure.in/v1";
-        }
-        RestAssured.baseURI=baseHost;
-        System.out.println("Base URI is : " + RestAssured.baseURI);
+//        String baseHost = System.getProperty("server.host");
+//        if (baseHost==null) {
+////            baseHost = "https://coinsecure.in";
+//            baseHost= "https://api.coinsecure.in/v1";
+//        }
+//        RestAssured.baseURI=baseHost;
+//        System.out.println("Base URI is : " + RestAssured.baseURI);
+//
 
+        System.out.println("************* API TESTING COINSECURE ***************");
         //Create object of TestNG Class//
         TestNG runner=new TestNG();
         // Create a list of String
@@ -29,6 +32,7 @@ public class ExecuteTest
         runner.setTestSuites(suitefiles);
         // finally execute the runner using run method
         runner.run();
+
 
     }
 }

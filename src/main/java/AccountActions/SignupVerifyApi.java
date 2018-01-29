@@ -39,7 +39,7 @@ public class SignupVerifyApi extends DriverCreation
                 baseUri(baseURI).
                 body(jsonAsMap).
                 when().put("/signup/verify/").
-                then().log().status();
+                then().log().status().log().body();
 
     }
 }

@@ -15,7 +15,7 @@ public class exchangeMax24Hr extends DriverCreation
         Response response=httpRequest.get("/exchange/max24Hr");
         response.then().log().status();
         response.getBody().print();
-        String str=response.jsonPath().getString("message");
-        System.out.println(str);
+//        String str=response.jsonPath().getString("message");
+//        System.out.println(str);
     }
 }

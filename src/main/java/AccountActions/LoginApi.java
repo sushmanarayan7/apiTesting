@@ -47,6 +47,6 @@ public class LoginApi extends DriverCreation
                 baseUri(baseURI).body(jsonAsMap).
                 when().
                 post("/login").
-                then().log().body();
+                then().log().status().and().log().body();
     }
 }

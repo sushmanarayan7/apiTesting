@@ -17,6 +17,6 @@ public class exchangeTicker extends DriverCreation
         Response response=httpRequest.get("/exchange/ticker");
         response.then().log().status();
         response.getBody().print();
-        response.then().assertThat().body("count",equalTo(9));
+//        response.then().assertThat().body("count",equalTo(9));
     }
 }

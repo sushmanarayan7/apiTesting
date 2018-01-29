@@ -25,15 +25,7 @@ public class SignupApi extends DriverCreation
     @Test(dataProvider="apiData")
     public void signupApi(String email, String password)
     {
-//        String baseHost = System.getProperty("server.host");
-//        if (baseHost==null)
-//        {
-//            baseHost= "https://api.coinsecure.in/v1";
-//        }
-//        RestAssured.baseURI=baseHost;
-//        System.out.println("Base URI is : " + RestAssured.baseURI);
-
-
+        System.out.println("----- POST METHOD /SIGNUP -----");
         Map<String,Object> jsonAsMap = new HashMap<>();
         RestAssured restAssured = new RestAssured();
         jsonAsMap.put("email",email);
@@ -45,6 +37,6 @@ public class SignupApi extends DriverCreation
                 baseUri(baseURI).
                 body(jsonAsMap).
                 when().post("/signup").
-                then().log().body();
+                then().log().status().log().body();
     }
 }

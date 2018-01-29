@@ -18,14 +18,14 @@ public class loginTokenVerify extends DriverCreation
     public Object[][] dataSource()
     {
         return new String[][]{
-                {"testing12@coinsecure.in"}};
+                {"tesing1.coinsecure@gmail.com"}};
     }
 
     @Test(dataProvider = "apiLoginData")
     public void LoginTokenVerify(String email) throws Exception {
 
         LoginInitiateApi login=new LoginInitiateApi();
-        login.loginInitiate(email);
+        login.loginInitiate(email,"testing@123");
         BufferedReader reader = new BufferedReader(new FileReader("Token-File.txt"));
         GetToken getToken = new GetToken();
         getToken.getToken();
@@ -35,14 +35,16 @@ public class loginTokenVerify extends DriverCreation
         RequestSpecification httpRequest = RestAssured.given();
         Response response=httpRequest.pathParam("token",logintoken).queryParameter(email).get("/user/login/token/{token}");
         response.then().log().status();
-        String str=response.jsonPath().get("message");
-        System.out.println(str);
-        if(str.equals("sushmanarayan7@gmail.com"))
-        {
-            System.out.println(str+" : Valid Token");
-        }
-        else{
-            System.out.println(str+" : Invalid Token");
-        }
+        response.getBody().print();
+
+//        String str=response.jsonPath().get("message");
+//        System.out.println(str);
+//        if(str.equals("sushmanarayan7@gmail.com"))
+//        {
+//            System.out.println(str+" : Valid Token");
+//        }
+//        else{
+//            System.out.println(str+" : Invalid Token");
+//        }
     }
 }

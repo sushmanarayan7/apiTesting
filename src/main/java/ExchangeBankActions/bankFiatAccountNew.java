@@ -23,7 +23,7 @@ public class bankFiatAccountNew extends DriverCreation
         requestparms.put("ban","Dena Bank");
         requestparms.put("ifsc","BKDN201632");
         requestparms.put("message","Testing");
-        requestparms.put("banType","Savings Account");
+        requestparms.put("banType","Savings");
         requestparms.put("phone","8792090543");
         requestparms.put("otp","123456");
 

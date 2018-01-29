@@ -15,7 +15,7 @@ public class exchangeBidHigh extends DriverCreation
         Response response=httpRequest.get("/exchange/bid/high");
         response.then().log().status();
         response.getBody().print();
-        long val=(int)response.then().extract().path("message.rate");
-        System.out.println(val);
+//        long val=(int)response.then().extract().path("message.rate");
+//        System.out.println(val);
     }
 }

@@ -15,7 +15,7 @@ public class exchangeLastTrade extends DriverCreation
         Response response=httpRequest.get("/exchange/lastTrade");
         response.then().log().status();
         response.getBody().print();
-        String str=response.jsonPath().getString("message");
-        System.out.println(str);
+//        String str=response.jsonPath().getString("message");
+//        System.out.println(str);
     }
 }

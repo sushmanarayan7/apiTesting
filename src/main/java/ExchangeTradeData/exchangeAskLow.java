@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static locators.apiKey.apikey;
 
-public class    exchangeAskLow extends DriverCreation
+public class exchangeAskLow extends DriverCreation
 {
     @Test
     public void AskLow()
@@ -17,8 +17,8 @@ public class    exchangeAskLow extends DriverCreation
         Response response=httpRequest.get("/exchange/ask/low");
         response.then().log().status();
         response.getBody().print();
-        long val=(int)response.then().extract().path("message.rate");
-        System.out.println(val);
+//        long val=(int)response.then().extract().path("message.rate");
+//        System.out.println(val);
 
     }
 }

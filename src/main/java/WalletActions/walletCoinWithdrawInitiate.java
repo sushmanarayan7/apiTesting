@@ -28,7 +28,7 @@ public class walletCoinWithdrawInitiate extends DriverCreation
                 post("/user/wallet/coin/withdraw/initiate");
         response.then().log().status();
         response.getBody().print();
-        String resmsg=response.then().extract().path("message");
-        System.out.println("Response Message : "+resmsg);
+//        String resmsg=response.then().extract().path("message");
+//        System.out.println("Response Message : "+resmsg);
     }
 }

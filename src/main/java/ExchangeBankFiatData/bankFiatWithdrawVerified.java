@@ -19,7 +19,7 @@ public class bankFiatWithdrawVerified extends DriverCreation
                 get("/user/exchange/bank/fiat/withdraw/verified");
         response.then().log().status();
         response.getBody().print();
-//        String withdrawID=response.then().extract().path("message.withdrawID");
-//        System.out.println(withdrawID);
+//      String withdrawID=response.then().extract().path("message.withdrawID");
+//      System.out.println(withdrawID);
     }
 }

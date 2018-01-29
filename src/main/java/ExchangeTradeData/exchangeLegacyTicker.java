@@ -15,7 +15,7 @@ public class exchangeLegacyTicker extends DriverCreation
         Response response=httpRequest.get("/exchange/legacyTicker");
         response.then().log().status();
         response.getBody().print();
-        String str=response.jsonPath().getString("message");
-        System.out.println(str);
+//        String str=response.jsonPath().getString("message");
+//        System.out.println(str);
     }
 }

@@ -1,26 +1,37 @@
 package AccountData;
 
 import base.DriverCreation;
+import base.ReadExcel;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static locators.apiKey.apikey;
 
 public class exchangeTradeSummary extends DriverCreation
 {
-    @Test
-    public void TradeSummary()
+    public ReadExcel excelreader;
+
+    @DataProvider(name = "apiData")
+    public Object[][] dataSource()
+    {
+        excelreader = new ReadExcel();
+        return excelreader.readExcel("poi_test.xlsx","apiKey");
+    }
+
+    @Test(dataProvider="apiData")
+    public void TradeSummary(String key)
     {
         RequestSpecification httpRequest = RestAssured.given();
-        Response response=httpRequest.header("Authorization",apikey).get("/user/exchange/trade/summary");
+        Response response=httpRequest.parameter("key", key).header("Authorization","{key}").get("/user/exchange/trade/summary");
         response.then().log().status();
-//        response.getBody().print();
-        String str=response.jsonPath().get("method");
-        Assert.assertEquals("Exchange Trade Summary",str,"method is verified");
-        String str1=response.jsonPath().getString("message");
-        System.out.println(str1);
+        response.getBody().print();
+//        String str=response.jsonPath().get("method");
+//        Assert.assertEquals("Exchange Trade Summary",str,"method is verified");
+//        String str1=response.jsonPath().getString("message");
+//        System.out.println(str1);
     }
 }

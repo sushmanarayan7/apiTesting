@@ -15,7 +15,7 @@ public class exchangeMin24Hr extends DriverCreation
         Response response=httpRequest.get("/exchange/min24Hr");
         response.then().log().status();
         response.getBody().print();
-        String str=response.jsonPath().getString("message");
-        System.out.println(str);
+//        String str=response.jsonPath().getString("message");
+//        System.out.println(str);
     }
 }

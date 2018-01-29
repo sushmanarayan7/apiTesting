@@ -25,7 +25,7 @@ public class DriverCreation {
             baseHost= "https://api.coinsecure.in/v1";
         }
         RestAssured.baseURI=baseHost;
-        System.out.println("Base URI is : " + RestAssured.baseURI);
+//        System.out.println("Base URI is : " + RestAssured.baseURI);
     }
 
 //    @AfterMethod
