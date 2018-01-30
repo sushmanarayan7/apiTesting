@@ -1,5 +1,6 @@
 package ExchangeBankActions;
 
+import base.DriverCreation;
 import base.ReadExcel;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
@@ -9,7 +10,7 @@ import org.testng.annotations.Test;
 
 import static locators.apiKey.apikey;
 
-public class bankFiatWithdrawUnverifiedCancel
+public class bankFiatWithdrawUnverifiedCancel extends DriverCreation
 {
     public ReadExcel excelreader;
 
@@ -21,7 +22,7 @@ public class bankFiatWithdrawUnverifiedCancel
     }
 
     @Test(dataProvider="apiData")
-    public void FiatWithdrawUnverifiedCancel(String withdrawID,String apikey)
+    public void FiatWithdrawUnverifiedCancel(String withdrawID, String apikey)
     {
         RequestSpecification httpRequest = RestAssured.given();
         Response response=httpRequest.header("Authorization",apikey).pathParam("withdrawID",withdrawID).

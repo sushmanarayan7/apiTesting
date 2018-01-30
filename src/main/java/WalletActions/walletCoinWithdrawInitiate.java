@@ -1,28 +1,39 @@
 package WalletActions;
 
 import base.DriverCreation;
+import base.ReadExcel;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 import net.minidev.json.JSONObject;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class walletCoinWithdrawInitiate extends DriverCreation
 {
-    @Test
-    public void CoinWithdrawInitiate()
+    public ReadExcel excelreader;
+
+    @DataProvider(name = "apiData")
+    public Object[][] dataSource()
+    {
+        excelreader = new ReadExcel();
+        return excelreader.readExcel("poi_test.xlsx","WalletCoinWithdrawinitiate");
+    }
+
+    @Test(dataProvider="apiData")
+        public void CoinWithdrawInitiate(String walletID,String amt,String toAddr,String msg,String pin,String apikey)
     {
         RequestSpecification httpRequest = RestAssured.given();
 
         JSONObject requestparms= new JSONObject();
-        requestparms.put("walletID","bDE4PKxaDfblOPc0u6hq");
-        requestparms.put("amt","1");
-        requestparms.put("toAddr","1CNugRENyVP6aCbUku6TnryNEs6a41eMKF");
-        requestparms.put("msg","Testing");
-        requestparms.put("pin","");
+        requestparms.put("walletID",walletID);
+        requestparms.put("amt",amt);
+        requestparms.put("toAddr",toAddr);
+        requestparms.put("msg",msg);
+        requestparms.put("pin",pin);
 
-        Response response=httpRequest.body(requestparms).header("Authorization","h947NqE3snlyWjznSVFW2UaBLRHzIS62CcY1KhjA").
+        Response response=httpRequest.body(requestparms).header("Authorization",apikey).
                 when().
                 contentType(ContentType.JSON).
                 post("/user/wallet/coin/withdraw/initiate");
